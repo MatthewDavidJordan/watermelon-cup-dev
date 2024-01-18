@@ -1,13 +1,22 @@
 import { React } from 'react';
 import { Navbar } from '../components/Navbar'
 import './Home.css';
-import { CountdownTimer } from '../components/CountdownTimer';
+import { Ticker } from '../components/Ticker';
+
+import { add } from 'date-fns';
+
+// default date
+const futureDate = add(new Date(), {
+  days: 0,
+  hours: 0,
+  minutes: 1
+});
 
 export const Home = () => {
     return (
         <div className='home-layout'>
             <Navbar/>
-            <CountdownTimer/>
+            <Ticker futureDate={futureDate}/>
         </div>
     )
 }
