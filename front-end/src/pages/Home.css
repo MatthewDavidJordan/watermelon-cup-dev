@@ -1,0 +1,7 @@
+ .home-layout {
+    background-image: url('../../public/Background_Image.jpg');
+    background-size: cover;
+    height: 100vh;
+    margin-top: -1rem;
+}
+
