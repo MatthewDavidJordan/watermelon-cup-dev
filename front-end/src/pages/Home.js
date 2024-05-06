@@ -1,15 +1,15 @@
 import { React } from 'react';
 import { Navbar } from '../components/Navbar'
 import './Home.css';
-import { Ticker } from '../components/Ticker';
+import { Ticker } from '../components/Countdown/Ticker';
 
 import { add } from 'date-fns';
 
 // default date
 const futureDate = add(new Date(), {
-  days: 0,
-  hours: 0,
-  minutes: 1
+  days: 64,
+  hours: 2,
+  minutes: 30
 });
 
 export const Home = () => {

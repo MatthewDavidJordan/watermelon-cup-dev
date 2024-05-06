@@ -1,7 +1,7 @@
 import { TickerCell } from './TickerCell';
 import { ThreeDigitTickerCell } from './ThreeDigitTickerCell'
 import { TickerSeparator } from './TickerSeparator';
-import { useTicker } from '../hooks/useTicker';
+import { useTicker } from '../../hooks/useTicker';
 
 import './Ticker.css';
 

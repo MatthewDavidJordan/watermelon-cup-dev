@@ -1,0 +1,74 @@
+import React, { useState } from "react";
+import "./Login.css";
+import { doSignInWithEmailAndPassword, doSignInWithGoogle } from "../firebase/auth";
+import { useNavigate } from "react-router-dom";
+
+export const Login = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [isSigningIn, setIsSigningIn] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+    const navigate = useNavigate();
+    
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        if (!isSigningIn) {
+            setIsSigningIn(true);
+            try {
+                await doSignInWithEmailAndPassword(email, password);
+                console.log("User signed in successfully");
+                navigate("/");
+                setErrorMessage("");
+            } catch (error) {
+                setErrorMessage(error.message);
+                console.log(errorMessage + "Error signing in");
+                setEmail("");
+                setPassword("");
+                setIsSigningIn(false);
+            }
+        }
+    }
+
+    const onGoogleSignIn = (e) => {
+        e.preventDefault();
+        if (!isSigningIn){
+            setIsSigningIn(true);
+            doSignInWithGoogle().catch((error) => {
+                setErrorMessage(error.message);
+                console.log(errorMessage + "Error signing in with Google");
+                setIsSigningIn(false);
+            });
+        }
+    }
+
+    return (
+        <div className="login-container">
+            <form className="login-form" onSubmit={onSubmit}>
+                <h2>Login</h2>
+                <p>{errorMessage}</p>
+                <div className="form-group">
+                    <label>Email</label>
+                    <input
+                        type="email"
+                        placeholder="Enter your email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Password</label>
+                    <input
+                        type="password"
+                        placeholder="Enter your password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                </div>
+                <button type="submit" onClick={onSubmit} disabled={isSigningIn}>Login</button>
+                <button onClick={onGoogleSignIn} disabled={isSigningIn}>Sign in with Google</button>
+            </form>
+        </div>
+       );
+}
