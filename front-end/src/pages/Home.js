@@ -3,6 +3,9 @@ import { Navbar } from '../components/Navbar'
 import './Home.css';
 import { Ticker } from '../components/Countdown/Ticker';
 
+import { Fade } from "react-awesome-reveal";
+
+
 // import { add, set } from 'date-fns';
 
 import { Link } from 'react-router-dom';
@@ -53,7 +56,9 @@ export const Home = () => {
             
             )}
             <Navbar/>
-            <Ticker futureDate={futureDate}/>
+            <Fade direction="up" duration={1500}>
+                <Ticker futureDate={futureDate}/>
+            </Fade>
         </div>
     )
 }
