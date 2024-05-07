@@ -7,7 +7,7 @@ import { useAuth } from '../contexts/authContexts/firebaseAuth';
 export const Navbar = () => {
 
     const { userLoggedIn } = useAuth();
-    const { currentUser } = useAuth();
+    // const { currentUser } = useAuth();
     console.log("Value of userLoggedIn" + userLoggedIn)
 
     return (
@@ -28,7 +28,7 @@ export const Navbar = () => {
                     <Link to="/matches">Matches</Link>
                 </li>
                 <li className='nav-item'>
-                    <Link to="/settings"><button className='primary-button'> Welcome {currentUser.email} </button></Link>
+                    <Link to="/settings"><button className='primary-button'> Log Out </button></Link>
                 </li>
             </ul>
             :
