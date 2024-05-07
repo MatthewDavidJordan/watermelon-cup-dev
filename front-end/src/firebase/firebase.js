@@ -3,16 +3,9 @@ import { initializeApp } from "firebase/app";
 
 import { getAuth } from "firebase/auth";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyACwiB_noPh0_5Lbl8Ana4IeYJW6bXDUwY",
-  authDomain: "watermelon-cup-33a1d.firebaseapp.com",
-  projectId: "watermelon-cup-33a1d",
-  storageBucket: "watermelon-cup-33a1d.appspot.com",
-  messagingSenderId: "570273796548",
-  appId: "1:570273796548:web:9021633dfffad327c69491",
-  measurementId: "G-HPN6NK2HJE"
-};
+const p = process.env;
 
+const firebaseConfig = JSON.parse(p.REACT_APP_FIREBASE_CONFIG);
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
