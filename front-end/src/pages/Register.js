@@ -122,155 +122,154 @@ export const Register = () => {
         <div className="registration-container">
             <Navbar />
             { onFirstPage ?
-                    <form className="registration-form" onSubmit={register}>
-                        { userLoggedIn ?
-                        (
-                         <>
-                          <h1>Logged In</h1>
-                          <p className="full-width"> Email: {currentUser.email} </p>
-                         </> 
-                        ) : (<>
-                          <h1>Create Your Account</h1>
-                          <div className="full-width">
-                              <div className="form-group">
-                                  <label>Email</label>
-                                  <input
-                                      type="email"
-                                      placeholder="Enter your email"
-                                      value={email}
-                                      onChange={(e) => setEmail(e.target.value)}
-                                      required
-                                  />
-                              </div>
-                          </div>
-                          <div className="full-width">
-                              <div className="form-group">
-                                  <label>Password</label>
-                                  <input
-                                      type="password"
-                                      placeholder="Enter your password (at least 6 characters)"
-                                      value={password}
-                                      onChange={(e) => setPassword(e.target.value)}
-                                      required
-                                  />
-                              </div>
-                          </div>
-                          <div className="full-width">
-                              <div className="form-group">
-                                  <label>Confirm Password</label>
-                                  <input
-                                      type="password"
-                                      placeholder="Confirm your password"
-                                      value={confirmPassword}
-                                      onChange={(e) => setConfirmPassword(e.target.value)}
-                                      required
-                                  />
-                              </div>
-                          </div>
-                          <p> {errorMessage} </p>
-                          <button id="register-button" onSubmit={register} disabled={isRegistering}>
-                              Register Account
-                          </button>
-
-                          <p className="full-width" id="or-divider">OR</p>
-
-                          <div className="full-width">
-                              <button id="google-auth-button"onClick={onGoogleSignIn} disabled={isRegistering}>
-                                  <GoogleIcon /> <span id="google-button-text"> Register with Google </span>
-                              </button>
-                          </div>
-                        </>)}
-
-                        <hr className="full-width" />
-
-                        <div id="continue-button-div" className="full-width">
-                            <button id="continue-button" onClick={() => setOnFirstPage(false)} disabled={ !userLoggedIn }>
-                                Continue to Player Registration
-                            </button>
-                            <p>Already have an account that's registered? <a href="/login">Login</a></p>
-                        </div>
-                    </form> 
-                : 
-
-                <form className="registration-form" onSubmit={addUserInfoToFirestore}>
-                    <h1>Register for Watermelon Cup 2024</h1>
+              (<form className="registration-form" onSubmit={register}>
+                  { userLoggedIn ?
+                  (
+                    <>
+                    <h1>Logged In</h1>
+                    <p className="full-width"> Email: {currentUser.email} </p>
+                    </> 
+                  ) : (<>
+                    <h1>Create Your Account</h1>
                     <div className="full-width">
                         <div className="form-group">
-                            <label>First Name</label>
+                            <label>Email</label>
                             <input
-                                type="text"
-                                placeholder="Enter your first name"
-                                value={firstName}
-                                onChange={(e) => setFirstName(e.target.value)}
+                                type="email"
+                                placeholder="Enter your email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                                 required
                             />
                         </div>
                     </div>
                     <div className="full-width">
                         <div className="form-group">
-                            <label>Last Name</label>
+                            <label>Password</label>
                             <input
-                                type="text"
-                                placeholder="Enter your last name"
-                                value={lastName}
-                                onChange={(e) => setLastName(e.target.value)}
+                                type="password"
+                                placeholder="Enter your password (at least 6 characters)"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                                 required
                             />
                         </div>
                     </div>
                     <div className="full-width">
                         <div className="form-group">
-                            <label>Nickname (Optional)</label>
+                            <label>Confirm Password</label>
                             <input
-                                type="text"
-                                placeholder="Enter your nickname (optional)"
-                                value={nickname}
-                                onChange={(e) => setNickname(e.target.value)}
+                                type="password"
+                                placeholder="Confirm your password"
+                                value={confirmPassword}
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                                required
                             />
                         </div>
                     </div>
+                    <p> {errorMessage} </p>
+                    <button id="register-button" onSubmit={register} disabled={isRegistering}>
+                        Register Account
+                    </button>
+
+                    <p className="full-width" id="or-divider">OR</p>
+
                     <div className="full-width">
-                        <div className="form-group">
-                            <label>Staples Graduation Class</label>
-                            <select value={graduationYear} onChange={(e) => setGraduationYear(e.target.value)} required>
-                                <option value="">Select Year</option>
-                                <option value="before2000">Before 2000</option>
-                                {/* Add options for each year from 2000 to 2028 */}
-                                {Array.from({ length: 29 }, (_, i) => (
-                                <option key={i + 2000} value={i + 2000}>
-                                    {i + 2000}
-                                </option>
-                                ))}
-                                <option value="after2028">After 2028</option>
-                            </select>
-                        </div>
+                        <button id="google-auth-button"onClick={onGoogleSignIn} disabled={isRegistering}>
+                            <GoogleIcon /> <p> Register with Google </p>
+                        </button>
                     </div>
-                    <hr className="full-width" />
-                    <div className="full-width">
-                        <div className="form-group">
-                            <label>Are you right or left footed?</label>
-                            <select value={footPref} onChange={(e) => setFootPref(e.target.value)} required>
-                                <option value="">Select Option</option>
-                                <option value="right">Right</option>
-                                <option value="left">Left</option>
-                                <option value="both">Both</option>
-                            </select>
-                        </div>
+                  </>)}
+
+                  <hr className="full-width" />
+
+                  <div id="continue-button-div" className="full-width">
+                      <button id="continue-button" onClick={() => setOnFirstPage(false)} disabled={ !userLoggedIn }>
+                          Continue to Player Registration
+                      </button>
+                      <p>Already have an account that's registered? <a href="/login">Login</a></p>
+                  </div>
+              </form> 
+              ) : (
+              <form className="registration-form" onSubmit={addUserInfoToFirestore}>
+                <h1>Register for Watermelon Cup 2024</h1>
+                <div className="full-width">
+                    <div className="form-group">
+                        <label>First Name</label>
+                        <input
+                            type="text"
+                            placeholder="Enter your first name"
+                            value={firstName}
+                            onChange={(e) => setFirstName(e.target.value)}
+                            required
+                        />
                     </div>
-                    <div className="full-width">
-                        <div className="form-group">
-                            <label>Pick your preferred position</label>
-                            <select value={position} onChange={(e) => setPosition(e.target.value)} required>
-                                <option value="">Select Position</option>
-                                <option value="goalkeeper">Goalkeeper</option>
-                                <option value="offense">Offense</option>
-                                <option value="defense">Defense</option>
-                                <option value="anywhere">Anywhere</option>
-                            </select>
-                        </div>
+                </div>
+                <div className="full-width">
+                    <div className="form-group">
+                        <label>Last Name</label>
+                        <input
+                            type="text"
+                            placeholder="Enter your last name"
+                            value={lastName}
+                            onChange={(e) => setLastName(e.target.value)}
+                            required
+                        />
                     </div>
-                    <button id="register-button" onSubmit={addUserInfoToFirestore}>Register</button>
-                </form>
+                </div>
+                <div className="full-width">
+                    <div className="form-group">
+                        <label>Nickname (Optional)</label>
+                        <input
+                            type="text"
+                            placeholder="Enter your nickname (optional)"
+                            value={nickname}
+                            onChange={(e) => setNickname(e.target.value)}
+                        />
+                    </div>
+                </div>
+                <div className="full-width">
+                    <div className="form-group">
+                        <label>Staples Graduation Class</label>
+                        <select value={graduationYear} onChange={(e) => setGraduationYear(e.target.value)} required>
+                            <option value="">Select Year</option>
+                            <option value="before2000">Before 2000</option>
+                            {/* Add options for each year from 2000 to 2028 */}
+                            {Array.from({ length: 29 }, (_, i) => (
+                            <option key={i + 2000} value={i + 2000}>
+                                {i + 2000}
+                            </option>
+                            ))}
+                            <option value="after2028">After 2028</option>
+                        </select>
+                    </div>
+                </div>
+                <hr className="full-width" />
+                <div className="full-width">
+                    <div className="form-group">
+                        <label>Are you right or left footed?</label>
+                        <select value={footPref} onChange={(e) => setFootPref(e.target.value)} required>
+                            <option value="">Select Option</option>
+                            <option value="right">Right</option>
+                            <option value="left">Left</option>
+                            <option value="both">Both</option>
+                        </select>
+                    </div>
+                </div>
+                <div className="full-width">
+                    <div className="form-group">
+                        <label>Pick your preferred position</label>
+                        <select value={position} onChange={(e) => setPosition(e.target.value)} required>
+                            <option value="">Select Position</option>
+                            <option value="goalkeeper">Goalkeeper</option>
+                            <option value="offense">Offense</option>
+                            <option value="defense">Defense</option>
+                            <option value="anywhere">Anywhere</option>
+                        </select>
+                    </div>
+                </div>
+                <button id="register-button" onSubmit={addUserInfoToFirestore}>Register</button>
+              </form>)
             }
         </div>
     );                
