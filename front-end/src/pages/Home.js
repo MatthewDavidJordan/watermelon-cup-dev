@@ -51,7 +51,7 @@ export const Home = () => {
         <div className='home-layout'>
             { !registered && (
                 <div className='need-to-register-container'>
-                    <p><Link to="/register">Register for the Watermelon Cup</Link></p>
+                    <p>You are not registered. <Link to="/register">Register for the Watermelon Cup</Link></p>
                 </div>
             
             )}
