@@ -5,9 +5,6 @@ import { Ticker } from '../components/Countdown/Ticker';
 
 import { Fade } from "react-awesome-reveal";
 
-
-// import { add, set } from 'date-fns';
-
 import { Link } from 'react-router-dom';
 
 import { doc, getDoc } from 'firebase/firestore';
