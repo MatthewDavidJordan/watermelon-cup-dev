@@ -34,7 +34,8 @@ export const Home = () => {
               setRegistered(false);
             }
           } else {
-            setRegistered(false);
+            // User is not logged in so don't tell them to register
+            setRegistered(true);
           }
         };
       
