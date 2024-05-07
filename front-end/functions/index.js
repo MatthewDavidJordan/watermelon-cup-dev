@@ -1,5 +1,8 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
+const registerUser = require('./registerUser');
+const addUserInfo = require('./addUserInfo');
+
 admin.initializeApp();
 
 const db = admin.firestore();
@@ -23,3 +26,7 @@ exports.userDeleted = functions.auth.user().onDelete((user) => {
   // Remove the user from the "users" collection in Firestore
   return db.collection('users').doc(user.uid).delete();
 });
+
+exports.registerUser = registerUser;
+exports.addUserInfo = addUserInfo;
+
