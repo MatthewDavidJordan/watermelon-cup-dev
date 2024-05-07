@@ -21,11 +21,14 @@ export const Login = () => {
                 navigate("/");
                 setErrorMessage("");
             } catch (error) {
-                setErrorMessage(error.message);
-                console.log(errorMessage + "Error signing in");
+                // setErrorMessage(error.message);
+                if (error.message === "Firebase: Error (auth/invalid-credential).") {
+                    setErrorMessage("Invalid email or password or user does not exist. Please try again.");
+                }
                 setEmail("");
                 setPassword("");
                 setIsSigningIn(false);
+            
             }
         }
     }
