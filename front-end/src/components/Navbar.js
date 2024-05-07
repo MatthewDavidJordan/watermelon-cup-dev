@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { React } from 'react';
 import './Navbar.css';
 
@@ -7,11 +7,12 @@ import { useAuth } from '../contexts/authContexts/firebaseAuth';
 export const Navbar = () => {
 
     const { userLoggedIn } = useAuth();
-    // const { currentUser } = useAuth();
-    console.log("Value of userLoggedIn" + userLoggedIn)
+    const location = useLocation();
+
+    const isHomePage = location.pathname === '/';
 
     return (
-    <div className='navbar-container'>
+    <div className={`navbar-container ${isHomePage ? 'transparent' : 'black'}`}>
         <nav>
             {userLoggedIn ?
             <ul className='nav-list'>

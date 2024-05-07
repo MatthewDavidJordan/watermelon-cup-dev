@@ -16,7 +16,7 @@ import { Navbar } from '../components/Navbar';
 
 export const Register = () => {
     const [onFirstPage, setOnFirstPage] = useState(true);
-    const { userLoggedIn } = useAuth();
+    const { userLoggedIn, currentUser } = useAuth();
 
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -123,55 +123,63 @@ export const Register = () => {
             <Navbar />
             { onFirstPage ?
                     <form className="registration-form" onSubmit={register}>
-                        <h1>Create Your Account</h1>
-                        <div className="full-width">
-                            <div className="form-group">
-                                <label>Email</label>
-                                <input
-                                    type="email"
-                                    placeholder="Enter your email"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    required
-                                />
-                            </div>
-                        </div>
-                        <div className="full-width">
-                            <div className="form-group">
-                                <label>Password</label>
-                                <input
-                                    type="password"
-                                    placeholder="Enter your password (at least 6 characters)"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    required
-                                />
-                            </div>
-                        </div>
-                        <div className="full-width">
-                            <div className="form-group">
-                                <label>Confirm Password</label>
-                                <input
-                                    type="password"
-                                    placeholder="Confirm your password"
-                                    value={confirmPassword}
-                                    onChange={(e) => setConfirmPassword(e.target.value)}
-                                    required
-                                />
-                            </div>
-                        </div>
-                        <p> {errorMessage} </p>
-                        <button id="register-button" onSubmit={register} disabled={isRegistering}>
-                            Register Account
-                        </button>
+                        { userLoggedIn ?
+                        (
+                         <>
+                          <h1>Logged In</h1>
+                          <p className="full-width"> Email: {currentUser.email} </p>
+                         </> 
+                        ) : (<>
+                          <h1>Create Your Account</h1>
+                          <div className="full-width">
+                              <div className="form-group">
+                                  <label>Email</label>
+                                  <input
+                                      type="email"
+                                      placeholder="Enter your email"
+                                      value={email}
+                                      onChange={(e) => setEmail(e.target.value)}
+                                      required
+                                  />
+                              </div>
+                          </div>
+                          <div className="full-width">
+                              <div className="form-group">
+                                  <label>Password</label>
+                                  <input
+                                      type="password"
+                                      placeholder="Enter your password (at least 6 characters)"
+                                      value={password}
+                                      onChange={(e) => setPassword(e.target.value)}
+                                      required
+                                  />
+                              </div>
+                          </div>
+                          <div className="full-width">
+                              <div className="form-group">
+                                  <label>Confirm Password</label>
+                                  <input
+                                      type="password"
+                                      placeholder="Confirm your password"
+                                      value={confirmPassword}
+                                      onChange={(e) => setConfirmPassword(e.target.value)}
+                                      required
+                                  />
+                              </div>
+                          </div>
+                          <p> {errorMessage} </p>
+                          <button id="register-button" onSubmit={register} disabled={isRegistering}>
+                              Register Account
+                          </button>
 
-                        <p className="full-width" id="or-divider">OR</p>
+                          <p className="full-width" id="or-divider">OR</p>
 
-                        <div className="full-width">
-                            <button id="google-auth-button"onClick={onGoogleSignIn} disabled={isRegistering}>
-                                <GoogleIcon /> <span id="google-button-text"> Register with Google </span>
-                            </button>
-                        </div>
+                          <div className="full-width">
+                              <button id="google-auth-button"onClick={onGoogleSignIn} disabled={isRegistering}>
+                                  <GoogleIcon /> <span id="google-button-text"> Register with Google </span>
+                              </button>
+                          </div>
+                        </>)}
 
                         <hr className="full-width" />
 
