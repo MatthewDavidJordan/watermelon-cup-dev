@@ -8,6 +8,7 @@ import GoogleIcon from '@mui/icons-material/Google';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { auth, db } from '../firebase/firebase';
 
+import { Navbar } from '../components/Navbar';
 
 
 
@@ -119,6 +120,7 @@ export const Register = () => {
 
     return (
         <div className="registration-container">
+            <Navbar />
             { onFirstPage ?
                     <form className="registration-form" onSubmit={register}>
                         <h1>Create Your Account</h1>

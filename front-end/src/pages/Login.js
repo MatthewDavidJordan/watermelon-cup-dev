@@ -4,6 +4,8 @@ import { doSignInWithEmailAndPassword, doSignInWithGoogle } from "../firebase/au
 import { auth } from "../firebase/firebase";
 import { useNavigate } from "react-router-dom";
 
+import { Navbar } from '../components/Navbar'
+
 export const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -28,7 +30,6 @@ export const Login = () => {
                 setEmail("");
                 setPassword("");
                 setIsSigningIn(false);
-            
             }
         }
     }
@@ -59,6 +60,7 @@ export const Login = () => {
 
     return (
         <div className="login-container">
+            <Navbar/>
             <form className="login-form" onSubmit={onSubmit}>
                 <h2>Login</h2>
                 <p>{errorMessage}</p>
@@ -83,6 +85,7 @@ export const Login = () => {
                     />
                 </div>
                 <button type="submit" onClick={onSubmit} disabled={isSigningIn}>Login</button>
+                <h3>OR</h3>
                 <button onClick={onGoogleSignIn} disabled={isSigningIn}>Sign in with Google</button>
             </form>
         </div>

@@ -5,7 +5,6 @@
     width: 100%;
     min-height: 100vh;
     max-height: fit-content;
-    
   }
   
   .registration-form {
@@ -30,134 +29,126 @@
 
     justify-content: center;
     align-content: flex-start;
-  }
   
-  .registration-form h1 {
-    width: 100%;
-    margin-top: 0;
-    margin-bottom: 40px;
-    text-align: center;
-  }
-
-  .registration-form h2 {
-    width: 100%;
-    margin-top: 0;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-
-  .registration-form h3 {
-    width: 100%;
-    margin-top: 0;
-    margin-bottom: 15px;
-    text-align: center;
-  }
   
-  .full-width {
-    width: 100%;
-    display: flex;
+    .registration-form h1 {
+      width: 100%;
+      margin-top: 0;
+      margin-bottom: 40px;
+      text-align: center;
+    }
 
-    justify-content: center;
-  }
+    .registration-form h2 {
+      width: 100%;
+      margin-top: 0;
+      margin-bottom: 20px;
+      text-align: center;
+    }
 
-  .form-group {
-    height: fit-content;
-    margin-bottom: 10px;
-    margin-left: 5px;
-    margin-right: 5px;
-
-    width: fit-content;
+    .registration-form h3 {
+      width: 100%;
+      margin-top: 0;
+      margin-bottom: 15px;
+      text-align: center;
+    }
     
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: center;
-  }
-  
-  
-  .form-group label {
-    display: block;
-    align-self: flex-start;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  .form-group input {
-    width: 310px;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .registration-container select {
-    /* Reset default styles */
-    width: 330px;
-    appearance: none;
-    border: 1px solid #ccc;
-    padding: 10px 10px;
-    font-size: 16px;
-    border-radius: 4px;
-    /* Add a subtle border on hover */
-    &:hover {
-      border: 1.5px solid #ccc;
-    }
-  }
+    .full-width {
+      width: 100%;
+      display: flex;
 
-  #register-button {
-    margin-top: 40px;
-  }
-
-  #or-divider {
-    margin-top: 40px;
-    margin-bottom: 40px;
-
-    font-weight: bold;
-    font-size: 20px;
-  }
-
-  #google-auth-button {
-    align-items: center;
-
-    display: flex;
-    flex-direction: row;
-
-    justify-content: center;
-    align-content: center;
-
-    background-color: #fff;
-    border-radius: 5px;
-    border: thin solid #888;
-
-    margin-bottom: 40px;
-
-    #google-button-text {
-      margin-left: 5%;
-    }
-  }
-
-  #google-auth-button:hover {
-    background-color: #f1f1f1;
-  }
-
-  #continue-button-div {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-
-    justify-content: center;
-    align-items: center;
-
-    margin-bottom: 40px;
-
-    #continue-button {
-      margin-top: 60px;
+      justify-content: center;
     }
 
+    .form-group {
+      height: fit-content;
+      margin-bottom: 10px;
+      margin-left: 5px;
+      margin-right: 5px;
 
+      width: fit-content;
+      
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    
+    
+    .form-group label {
+      display: block;
+      align-self: flex-start;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    
+    .form-group input {
+      width: 310px;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    
+    
+    #register-button {
+      margin-top: 40px;
+    }
+    
+    #or-divider {
+      margin-top: 40px;
+      margin-bottom: 40px;
+      
+      font-weight: bold;
+      font-size: 20px;
+    }
+    
+    #google-auth-button {
+      align-items: center;
+      
+      display: flex;
+      flex-direction: row;
+      
+      justify-content: center;
+      align-content: center;
+      
+      background-color: #fff;
+      border-radius: 5px;
+      border: thin solid #888;
+
+      margin-bottom: 40px;
+      
+      #google-button-text {
+        margin-left: 5%;
+      }
+    }
+    
+    #google-auth-button:hover {
+      background-color: #f1f1f1;
+    }
+
+    #continue-button-div {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      
+      justify-content: center;
+      align-items: center;
+      
+      margin-bottom: 40px;
+      
+      #continue-button {
+        margin-top: 60px;
+        border: thin solid #888;
+      }
+
+      #continue-button:disabled {
+        background-color: #f1f1f1;
+        opacity: 0.1;
+      }
+    }
   }
-
+  
   button {
     width: 300px;
     padding: 10px;
@@ -172,4 +163,18 @@
   
   button:hover {
     background-color: #b7babe;
+  }
+
+  .registration-container select {
+    /* Reset default styles */
+    width: 330px;
+    appearance: none;
+    border: 1px solid #ccc;
+    padding: 10px 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    /* Add a subtle border on hover */
+    &:hover {
+      border: 1.5px solid #ccc;
+    }
   }

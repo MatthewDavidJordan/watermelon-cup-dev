@@ -11,7 +11,7 @@ export const Navbar = () => {
     console.log("Value of userLoggedIn" + userLoggedIn)
 
     return (
-    <>
+    <div className='navbar-container'>
         <nav>
             {userLoggedIn ?
             <ul className='nav-list'>
@@ -45,6 +45,6 @@ export const Navbar = () => {
             </ul>
             }
         </nav>
-    </>
+    </div>
     )
 }
