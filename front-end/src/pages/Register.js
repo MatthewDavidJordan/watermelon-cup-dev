@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Register.css";
 import { doCreateUserWithEmailAndPassword, doSignInWithGoogle } from "../firebase/auth";
@@ -28,6 +28,7 @@ export const Register = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [isRegistering, setIsRegistering] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
+
     const navigate = useNavigate();
 
     const register = async (e) => {
@@ -78,7 +79,7 @@ export const Register = () => {
       
         // Clean up the observer on component unmount
         return () => unsubscribe();
-    }, []);
+    }, [navigate]);
 
     const onGoogleSignIn = (e) => {
         e.preventDefault();
