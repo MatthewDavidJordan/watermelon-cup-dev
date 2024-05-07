@@ -5,6 +5,14 @@ import { doCreateUserWithEmailAndPassword, doSignInWithGoogle } from "../firebas
 import { useAuth } from "../contexts/authContexts/firebaseAuth";
 import GoogleIcon from '@mui/icons-material/Google';
 
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { auth, db } from '../firebase/firebase';
+
+
+
+
+
+
 export const Register = () => {
     const [onFirstPage, setOnFirstPage] = useState(true);
     const { userLoggedIn } = useAuth();
@@ -52,6 +60,26 @@ export const Register = () => {
         }
     }
 
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged(async (user) => {
+          if (user) {
+            // Check if the user is already registered
+            const userRef = doc(db, 'users', user.uid);
+            const userDoc = await getDoc(userRef);
+            if (userDoc.exists() && userDoc.data().registered) {
+              // User is already registered, navigate to the homepage
+              setErrorMessage('User is already registered');
+              navigate("/");
+            } else {
+              // User is not registered, proceed with the registration process
+            }
+          }
+        });
+      
+        // Clean up the observer on component unmount
+        return () => unsubscribe();
+    }, []);
+
     const onGoogleSignIn = (e) => {
         e.preventDefault();
         if (!isRegistering){
@@ -62,22 +90,31 @@ export const Register = () => {
                 setIsRegistering(false);
             });
         } 
-    }
+    };
 
     const addUserInfoToFirestore = async (e) => {
         e.preventDefault();
         if (userLoggedIn) {
-            try{
-                await // Add user info to Firestore
-                console.log("User info added to Firestore");
-                navigate("/");
-            } catch (error) {
-                setErrorMessage(error.message);
-                console.log(errorMessage + "Error adding user info to Firestore");
-            }
+          try {
+            // Add user info to Firestore
+            const userRef = doc(db, 'users', auth.currentUser.uid);
+            await updateDoc(userRef, {
+              firstName,
+              lastName,
+              nickname,
+              graduationYear,
+              footPref,
+              position,
+              registered: true,
+            });
+            console.log("User info added to Firestore");
+            navigate("/");
+          } catch (error) {
+            setErrorMessage(error.message);
+            console.log(errorMessage + "Error adding user info to Firestore");
+          }
         }
-        
-    }
+      };
 
     return (
         <div className="registration-container">

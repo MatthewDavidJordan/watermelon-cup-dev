@@ -12,6 +12,7 @@ exports.newUserSignup = functions.auth.user().onCreate((user) => {
   return db.collection('users').doc(user.uid).set({
     email: user.email,
     createdAt: admin.firestore.FieldValue.serverTimestamp(),
+    registered: false,
   });
 });
 
