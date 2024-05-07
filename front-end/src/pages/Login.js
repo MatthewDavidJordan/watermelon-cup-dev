@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Login.css";
 import { doSignInWithEmailAndPassword, doSignInWithGoogle } from "../firebase/auth";
+import { auth } from "../firebase/firebase";
 import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
@@ -29,17 +30,29 @@ export const Login = () => {
         }
     }
 
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged((user) => {
+          if (user) {
+            // User is signed in, navigate to the homepage
+            navigate("/");
+          }
+        });
+    
+        // Clean up the observer on component unmount
+        return () => unsubscribe();
+      }, [navigate]);
+
     const onGoogleSignIn = (e) => {
         e.preventDefault();
-        if (!isSigningIn){
-            setIsSigningIn(true);
-            doSignInWithGoogle().catch((error) => {
-                setErrorMessage(error.message);
-                console.log(errorMessage + "Error signing in with Google");
-                setIsSigningIn(false);
-            });
+        if (!isSigningIn) {
+          setIsSigningIn(true);
+          doSignInWithGoogle().catch((error) => {
+            setErrorMessage(error.message);
+            console.log(errorMessage + "Error signing in with Google");
+            setIsSigningIn(false);
+          });
         }
-    }
+      };
 
     return (
         <div className="login-container">
