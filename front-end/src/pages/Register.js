@@ -87,9 +87,10 @@ export const Register = () => {
         if (!isRegistering){
             setIsRegistering(true);
             doSignInWithGoogle().catch((error) => {
-                setErrorMessage(error.message);
-                console.log(errorMessage + "Error signing in with Google");
+                setErrorMessage("Error signing in with Google. Please refresh the page and try again.");
                 setIsRegistering(false);
+                console.log(errorMessage + "Error signing in with Google");
+                return;
             });
         } 
     };
@@ -167,7 +168,7 @@ export const Register = () => {
                             />
                         </div>
                     </div>
-                    <p> {errorMessage} </p>
+                    <p className="full-width"> {errorMessage} </p>
                     <button id="register-button" onSubmit={register} disabled={isRegistering}>
                         Register Account
                     </button>
