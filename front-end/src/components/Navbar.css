@@ -50,10 +50,12 @@
 .primary-button {
     background-color: #ffffff;
     color: #000000;
+
+    height: 50px;
+    width: 150px;
     border: none;
     border-radius: 3px;
-    padding: 0.5rem 1.5rem;
-    font-size: 1.15rem;
+    font-size: 1.3rem;
     cursor: pointer;
     font-weight: 700;
 }

@@ -38,10 +38,10 @@ export const Navbar = () => {
                     <Link to="/">Watermelon Cup</Link>
                 </li>
                 <li className='nav-item'>
-                    <Link to="/login"><button className='primary-button'>Sign In</button></Link>
+                    <Link to="/login"><button className='primary-button'>Log In</button></Link>
                 </li>
                 <li className='nav-item'>
-                    <Link to="/register"><button className='primary-button'>Register</button></Link>
+                    <Link to="/register"><button className='primary-button'>Sign Up</button></Link>
                 </li>
             </ul>
             }
