@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { React } from 'react';
-import './Navbar.css';
+import '../styles/Navbar.css';
 
 import { useAuth } from '../contexts/authContexts/firebaseAuth';
 
