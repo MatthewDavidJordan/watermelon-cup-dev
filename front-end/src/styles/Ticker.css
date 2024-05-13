@@ -28,12 +28,12 @@
 }
 
 .tickerCellValue {
-        font-size: 7rem;
+    font-size: 7rem;
 }
     
 .tickerCellLabel {
-        font-style: italic;
-        font-size: 0.85rem;
+    font-style: italic;
+    font-size: 0.85rem;
 }
 
 .ticker-separator {
@@ -41,4 +41,62 @@
     margin-bottom: 2.5rem; 
     font-size: 7.5rem;
     padding: 0 0.5rem;
+}
+
+@media screen and (max-width: 1024px) {
+    .tickerShell {
+        padding: 1rem 1rem;
+    }
+
+    .tickerCellValue {
+        font-size: 5rem;
+    }
+
+    .tickerCellLabel {
+        font-size: 0.75rem;
+    }
+
+    .ticker-separator {
+        padding-top: 15px;
+        font-size: 5rem;
+    }
+    
+}
+
+@media screen and (max-width: 500px) {
+    .tickerShell {
+        padding: 0.5rem 0.5rem;
+    }
+
+    .tickerCellValue {
+        font-size: 3.5rem;
+    }
+
+    .tickerCellLabel {
+        font-size: 0.65rem;
+    }
+
+    .ticker-separator {
+        padding-top: 20px;
+        font-size: 3.5rem;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .tickerShell {
+        padding: 0.5rem 0.5rem;
+    }
+
+    .tickerCellValue {
+        font-size: 2.75rem;
+    }
+
+    .tickerCellLabel {
+        font-size: 0.6rem;
+    }
+
+    .ticker-separator {
+        padding-top: 20px;
+        font-size: 2.75rem;
+    }
 }
