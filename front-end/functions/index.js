@@ -27,6 +27,3 @@ exports.userDeleted = functions.auth.user().onDelete((user) => {
   return db.collection('users').doc(user.uid).delete();
 });
 
-exports.registerUser = registerUser;
-exports.addUserInfo = addUserInfo;
-
